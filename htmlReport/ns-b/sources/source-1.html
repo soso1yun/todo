@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > TodoRequest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.llm.todo.domain.todo.dto</a>
+</div>
+
+<h1>Coverage Summary for Class: TodoRequest (com.llm.todo.domain.todo.dto)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TodoRequest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.llm.todo.domain.todo.dto;
+&nbsp;
+&nbsp;import com.llm.todo.common.entity.BaseEntity;
+&nbsp;import com.llm.todo.domain.todo.TodoEntity;
+&nbsp;import com.llm.todo.domain.todo.enums.TodoStatus;
+&nbsp;import jakarta.validation.constraints.NotBlank;
+&nbsp;import jakarta.validation.constraints.Pattern;
+&nbsp;import lombok.*;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;
+&nbsp;
+&nbsp;@Builder
+&nbsp;@Getter
+&nbsp;@NoArgsConstructor
+&nbsp;@AllArgsConstructor
+&nbsp;public class TodoRequest extends BaseEntity {
+&nbsp;
+&nbsp;    @NotBlank
+&nbsp;    private String title;
+&nbsp;
+&nbsp;    @NotBlank
+&nbsp;    private String description;
+&nbsp;
+&nbsp;    @NotBlank
+&nbsp;    @Pattern(regexp = &quot;^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$&quot;, message = &quot;날짜는 YYYY-MM-DD 형태로 넣어주세요.&quot;)
+&nbsp;    private String dueDate;
+&nbsp;
+&nbsp;    @NotBlank
+&nbsp;    @Pattern(regexp = &quot;^(대기|긴급|진행중|완료)$&quot;)
+&nbsp;    private String status;
+&nbsp;
+&nbsp;    public TodoEntity to(long userId){
+<b class="fc">&nbsp;        return TodoEntity.builder()</b>
+<b class="fc">&nbsp;                .title(title)</b>
+<b class="fc">&nbsp;                .userId(userId)</b>
+<b class="fc">&nbsp;                .description(description)</b>
+<b class="fc">&nbsp;                .dueDate(LocalDate.parse(dueDate))</b>
+<b class="fc">&nbsp;                .status(TodoStatus.fromText(status))</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-14 02:24</div>
+</div>
+</body>
+</html>

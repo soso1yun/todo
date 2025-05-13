@@ -1,0 +1,56 @@
+@token = Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwidXNlck5hbWUiOiJ0ZXN0IiwidXNlcklkIjoidGVzdCIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3NDcxNDY5MTQsImV4cCI6MTg3MDMwMTIyN30.vd724q2VdgQ_0UNs9IRqtEFXTrQrzOqsy8WQ-GMCrec
+
+### 1. todo 등록
+POST http://localhost:8080/todos
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "title" : "title1",
+  "description": "description22",
+  "dueDate": "2025-05-15",
+  "status": "대기"
+}
+
+### 2. todo 조회
+GET http://localhost:8080/todos
+Content-Type: application/json
+Authorization: {{token}}
+
+
+### 3. todo id기준 조회
+GET http://localhost:8080/todos/2
+Content-Type: application/json
+Authorization: {{token}}
+
+
+### 4. todo id기준 수정
+PUT http://localhost:8080/todos/2
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "title" : "title2",
+  "description": "description1",
+  "dueDate": "2025-05-12",
+  "status": "대기"
+}
+
+
+### 5. todo 삭제
+DELETE http://localhost:8080/todos/5
+Content-Type: application/json
+Authorization: {{token}}
+
+
+### 5. todo 검색
+GET http://localhost:8080/todos/search
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+ "searchText" :"ti",
+ "startDueDate" :"2025-05-12",
+ "endDueDate" :"2025-05-15",
+ "status" :""
+}

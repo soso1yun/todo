@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: todo
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  datasource:
+    url: jdbc:sqlite:mydb.db
+    driver-class-name: org.sqlite.JDBC
+    username:
+    password:
+  h2:
+    console:
+      enabled: false
+
+jwt:
+  secret: y4wjAXUhPrGU/PSWGzjqKPQSusrriRG0g908fHX2pRc=
+  expiration_time: 123154313
+

@@ -1,0 +1,43 @@
+@token = Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwidXNlcklkIjoidGVzdDEiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzQ3MDQ5MTc0LCJleHAiOjE4NzAyMDM0ODd9.GJSKb0gvw1Q1c4URhi26uyfzts5jpyRLJrYflTCd4ZE
+
+### 1. 회원가입
+POST http://localhost:8080/users/signup
+Content-Type: application/json
+
+{
+  "userName" : "test",
+  "userId": "test2",
+  "password": "admin1234"
+}
+
+### 2. 로그인
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+  "userId": "test2",
+  "password": "admin1234"
+}
+
+
+### 3. 회원 정보 조회
+GET http://localhost:8080/users/me
+Content-Type: application/json
+Authorization: {{token}}
+
+
+### 4. 회원정보 수정
+PUT http://localhost:8080/users/me
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "userName": "",
+  "password": "admin12345"
+}
+
+
+### 5. 회원 삭제
+DELETE http://localhost:8080/users/me
+Content-Type: application/json
+Authorization: {{token}}

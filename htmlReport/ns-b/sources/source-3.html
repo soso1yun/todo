@@ -1,0 +1,97 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > TodoSearchRequest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.llm.todo.domain.todo.dto</a>
+</div>
+
+<h1>Coverage Summary for Class: TodoSearchRequest (com.llm.todo.domain.todo.dto)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">TodoSearchRequest</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.llm.todo.domain.todo.dto;
+&nbsp;
+&nbsp;import com.llm.todo.common.entity.BaseEntity;
+&nbsp;import jakarta.validation.constraints.Pattern;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import lombok.Builder;
+&nbsp;import lombok.Getter;
+&nbsp;import lombok.NoArgsConstructor;
+&nbsp;
+&nbsp;
+&nbsp;@Builder
+&nbsp;@Getter
+&nbsp;@NoArgsConstructor
+&nbsp;@AllArgsConstructor
+&nbsp;public class TodoSearchRequest extends BaseEntity {
+&nbsp;
+&nbsp;    private String searchText;
+&nbsp;
+&nbsp;    @Pattern(regexp = &quot;^$|^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$&quot;,message = &quot;날짜는 YYYY-MM-DD 형태로 넣어주세요.&quot;)
+&nbsp;    private String startDueDate;
+&nbsp;
+&nbsp;    @Pattern(regexp = &quot;^$|^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$&quot;,message = &quot;날짜는 YYYY-MM-DD 형태로 넣어주세요.&quot;)
+&nbsp;    private String endDueDate;
+&nbsp;
+&nbsp;    @Pattern(regexp = &quot;^$|^(대기|긴급|진행중|완료)$&quot;, message = &quot;상태는 &#39;대기&#39;, &#39;긴급&#39;, &#39;진행중&#39;, &#39;완료&#39; 중 하나여야 합니다.&quot;)
+&nbsp;    private String status;
+&nbsp;
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-14 02:24</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > SignUpService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.llm.todo.domain.user.service</a>
+</div>
+
+<h1>Coverage Summary for Class: SignUpService (com.llm.todo.domain.user.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SignUpService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SignUpService$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.llm.todo.domain.user.service;
+&nbsp;
+&nbsp;import com.llm.todo.common.entity.ResultResponse;
+&nbsp;import com.llm.todo.common.enums.ResultMessage;
+&nbsp;import com.llm.todo.common.exception.DatabaseException;
+&nbsp;import com.llm.todo.common.exception.DuplicateException;
+&nbsp;import com.llm.todo.common.exception.ErrorCode;
+&nbsp;import com.llm.todo.domain.user.dto.SignUpRequest;
+&nbsp;import com.llm.todo.domain.user.repository.UserRepository;
+&nbsp;import lombok.RequiredArgsConstructor;
+&nbsp;import org.springframework.security.crypto.password.PasswordEncoder;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;import org.springframework.transaction.annotation.Transactional;
+&nbsp;
+&nbsp;@Service
+&nbsp;@RequiredArgsConstructor
+&nbsp;public class SignUpService {
+&nbsp;
+&nbsp;    private final UserRepository userRepository;
+&nbsp;
+&nbsp;    private final PasswordEncoder passwordEncoder;
+&nbsp;
+&nbsp;
+&nbsp;    @Transactional
+&nbsp;    public ResultResponse signup(SignUpRequest request) {
+&nbsp;
+<b class="fc">&nbsp;        if (userRepository.existsByUserId(request.getUserId())) {</b>
+<b class="fc">&nbsp;            throw new DuplicateException(ErrorCode.DEFAULT_DUPLICATE);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;
+<b class="pc">&nbsp;        if (userRepository.save(request.to(passwordEncoder.encode(request.getPassword()))).getId() &lt; 1) {</b>
+<b class="nc">&nbsp;            throw new DatabaseException(ErrorCode.DEFAULT_DATABASE);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return ResultResponse.builder()</b>
+<b class="fc">&nbsp;                .message(ResultMessage.SIGNUP_SUCCESS.getMessage())</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-14 02:24</div>
+</div>
+</body>
+</html>

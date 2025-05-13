@@ -1,0 +1,148 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > SignUpRequest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.llm.todo.domain.user.dto</a>
+</div>
+
+<h1>Coverage Summary for Class: SignUpRequest (com.llm.todo.domain.user.dto)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SignUpRequest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.llm.todo.domain.user.dto;
+&nbsp;
+&nbsp;import com.llm.todo.domain.user.UserEntity;
+&nbsp;import jakarta.validation.constraints.NotBlank;
+&nbsp;import jakarta.validation.constraints.Pattern;
+&nbsp;import jakarta.validation.constraints.Size;
+&nbsp;import lombok.AllArgsConstructor;
+&nbsp;import lombok.Builder;
+&nbsp;import lombok.Getter;
+&nbsp;import lombok.NoArgsConstructor;
+&nbsp;
+&nbsp;@Getter
+&nbsp;@Builder
+&nbsp;@NoArgsConstructor
+&nbsp;@AllArgsConstructor
+&nbsp;public class SignUpRequest {
+&nbsp;
+&nbsp;    @NotBlank(message = &quot;이름을 입력해주세요.&quot;)
+&nbsp;    @Pattern(regexp = &quot;[A-Za-z]+(\\s[A-Za-z]+)*|[가-힣]+&quot;, message = &quot;이름은 한글 또는 영문으로만 입력해주세요.&quot;)
+&nbsp;    private String userName;
+&nbsp;
+&nbsp;    @NotBlank(message = &quot;아이디를 입력해주세요.&quot;)
+&nbsp;    @Pattern(regexp = &quot;^(?=.*[a-zA-Z0-9])[a-zA-Z0-9]{3,16}$&quot;, message = &quot;3자 이상 16자 이하, 영어 또는 숫자로 구성해주세요.&quot;)
+&nbsp;    private String userId;
+&nbsp;
+&nbsp;    @NotBlank(message = &quot;비밀번호를 입력해주세요.&quot;)
+&nbsp;    @Pattern(regexp = &quot;^(?:(?=.*[a-z])(?=.*[A-Z])|(?=.*[a-z])(?=.*\\d)|(?=.*[A-Z])(?=.*\\d)).{6,10}$&quot;, message = &quot;비밀번호는 6~10자 영문 소문자, 대문자, 숫자 중 최소 두 가지 이상 조합을 사용하세요.&quot;)
+&nbsp;    @Size(min = 6, max = 10, message = &quot;비밀번호는 최소 6자 이상 10자 이하입니다.&quot;)
+&nbsp;    private String password;
+&nbsp;
+&nbsp;    @Builder.Default
+&nbsp;    private String role = &quot;ROLE_USER&quot;;
+&nbsp;
+&nbsp;
+&nbsp;    public UserEntity to(String setPassword) {
+<b class="fc">&nbsp;        return UserEntity.builder()</b>
+<b class="fc">&nbsp;                .userId(userId)</b>
+<b class="fc">&nbsp;                .userName(userName)</b>
+<b class="fc">&nbsp;                .password(setPassword)</b>
+<b class="fc">&nbsp;                .role(role)</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-05-14 02:24</div>
+</div>
+</body>
+</html>
